@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>中文字符识别工具</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Example of Fixed Layout with Bootstrap version 2.0 from w3cschool.cc">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ static_url('css/bootstrap.css') }}" rel="stylesheet">
+	<link href="{{ static_url('css/example-fixed-layout.css') }}" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+   
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">文字识别</a></li>
+              <li><a href="#about">字体识别</a></li>
+              <li><a href="#contact">字体生成</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="leaderboard">
+        <h1>项目介绍</h1>
+        <p>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图像文字识别， 即所谓的光学字符识别（OCR），是深度学习应用的重要领域。这里我们使用CTPN+CRNN方法实现图像文字的定位和识别。<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CTPN方法来自香港中文大学、牛津大学的 Zhi Tian，黄伟林， Tong He， Pan He，乔宇等
+	人在 2016 年发表的文章《Detecting Text in Natural Image with Connectionist Text Proposal Network》，主要采用 RNN 和 CNN 的无缝结合提高检测精度。<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CRNN是《An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition》中提出的模型，解决图像中文字识别问题
+		</p>
+        <!-- <p><a class="btn btn-success btn-large">Sign Up for a 30 day free trial</a></p> -->
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>需要识别的图片</h2>
+				<form id="my_form" name="form" action="/" method="POST"  enctype="multipart/form-data" >
+					<input  name="fff"   type="file" /></em>
+					<input class="btn btn-success btn-large"  type="submit" value="提交"  />
+				</form>	          
+        </div>
+		 <div class="span4">
+          <h2>文字定位结果</h2>
+		  <div id="hidden" style="display:{{ display }};">
+			<img src="/ScenceRecognition_master/imgs/{{ file_name }}"  class="media-object"  alt="140x140">	
+		  </div>
+          
+        </div>
+        <div class="span4">
+          <h2>文字识别结果</h2>
+           <p>
+				{% for i in sim_preds %}
+					{{ i }}
+				{% end %}
+		   </p>
+          
+       </div>       
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; 吴良顺 &nbsp;&nbsp; 2017</p>
+      </footer>
+
+    </div> 
+
+
+  </body>
+</html>
